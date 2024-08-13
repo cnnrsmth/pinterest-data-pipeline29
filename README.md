@@ -6,15 +6,15 @@
 
 - [Project Overview](#Project-Overview)
 - [Architecture Overview](#Architecture-Overview)
-- [Milestone 1: Environment Setup](#Milestone-1:-Environment-Setup)
-- [Milestone 2: Building the Pipeline Foundation](#Milestone-2:-Building-the-Pipeline-Foundation)
+- [Milestone 1: Environment Setup](#Milestone-1-Environment-Setup)
+- [Milestone 2: Building the Pipeline Foundation](#Milestone-2-Building-the-Pipeline-Foundation)
 - [Milestone 3: EC2 Kafka Client Configuration](#Milestone-3:-EC2-Kafka-Client-Configuration)
-- [Milestone 4: Connecting MSK Cluster to S3 Bucket](#Milestone-4:-Connecting-MSK-Cluster-to-S3-Bucket)
-- [Milestone 5: API Gateway and REST Proxy Configuration](#Milestone-5:-API-Gateway-and-REST-Proxy-Configuration)
-- [Milestone 6: Databricks Setup and S3 Integration](#Milestone-6:-Databricks-Setup-and-S3-Integration)
-- [Milestone 7: Data Cleaning and Transformation with Spark](#Milestone-7:-Data-Cleaning-and-Transformation-with-Spark)
-- [Milestone 8: Automating with AWS MWAA](#Milestone-8:-Automating-with-AWS-MWAA)
-- [Milestone 9: Real-Time Data Processing with AWS Kinesis](#Milestone-9:-Real-Time-Data-Processing-with-AWS-Kinesis)
+- [Milestone 4: Connecting MSK Cluster to S3 Bucket](#Milestone-4-Connecting-MSK-Cluster-to-S3-Bucket)
+- [Milestone 5: API Gateway and REST Proxy Configuration](#Milestone-5-API-Gateway-and-REST-Proxy-Configuration)
+- [Milestone 6: Databricks Setup and S3 Integration](#Milestone-6-Databricks-Setup-and-S3-Integration)
+- [Milestone 7: Data Cleaning and Transformation with Spark](#Milestone-7-Data-Cleaning-and-Transformation-with-Spark)
+- [Milestone 8: Automating with AWS MWAA](#Milestone-8-Automating-with-AWS-MWAA)
+- [Milestone 9: Real-Time Data Processing with AWS Kinesis](#Milestone-9-Real-Time-Data-Processing-with-AWS-Kinesis)
 - [Conclusion](#Conclusion)
 
 ## Project Overview
