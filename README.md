@@ -1,14 +1,12 @@
 # Pinterest Experiment Analytics Data Pipeline Project
 
-![Pinterest Data Banner](https://blogfront-geenstijl-uploads-prod.storage.googleapis.com/0219f15b32_giphy.gif)
-
 ## Table of Contents
 
 - [Project Overview](#Project-Overview)
 - [Architecture Overview](#Architecture-Overview)
 - [Milestone 1: Environment Setup](#Milestone-1-Environment-Setup)
 - [Milestone 2: Building the Pipeline Foundation](#Milestone-2-Building-the-Pipeline-Foundation)
-- [Milestone 3: EC2 Kafka Client Configuration](#Milestone-3:-EC2-Kafka-Client-Configuration)
+- [Milestone 3: EC2 Kafka Client Configuration](#Milestone-3-EC2-Kafka-Client-Configuration)
 - [Milestone 4: Connecting MSK Cluster to S3 Bucket](#Milestone-4-Connecting-MSK-Cluster-to-S3-Bucket)
 - [Milestone 5: API Gateway and REST Proxy Configuration](#Milestone-5-API-Gateway-and-REST-Proxy-Configuration)
 - [Milestone 6: Databricks Setup and S3 Integration](#Milestone-6-Databricks-Setup-and-S3-Integration)
