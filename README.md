@@ -40,9 +40,9 @@ The initial phase involved setting up the development environment. This included
 
 _To begin, infrastructure was established to simulate a typical Pinterest data engineering environment. A zip package containing the user_posting_emulation.py script was downloaded. This script connects to an RDS (Relational Database Service) instance holding three key tables:_
 
-_pinterest_data: Contains information about posts uploaded to Pinterest.
-geolocation_data: Stores geolocation data linked to each Pinterest post.
-user_data: Includes details about the users who uploaded the posts.
+-_pinterest_data: Contains information about posts uploaded to Pinterest.
+-geolocation_data: Stores geolocation data linked to each Pinterest post.
+-user_data: Includes details about the users who uploaded the posts.
 A db_creds.yaml file was then created to securely store the database credentials (HOST, USER, PASSWORD), ensuring these details were not uploaded to GitHub by adding the file to the .gitignore list._
 
 _The script was executed to print and examine pin_result, geo_result, and user_result, each representing a single entry from the corresponding tables. This provided familiarity with the data structure that would be used throughout the project._
