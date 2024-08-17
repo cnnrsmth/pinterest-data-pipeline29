@@ -46,7 +46,13 @@ _To begin, infrastructure was established to simulate a typical Pinterest data e
 
 _A db_creds.yaml file was then created to securely store the database credentials (HOST, USER, PASSWORD), ensuring these details were not uploaded to GitHub by adding the file to the .gitignore list. A class was created to connect to the RDS database using parameters like HOST, USER, PASSWORD, etc._
 
+![Database Connection Setup](./Milestone%201&2/create_db_connector_function.png)
+
+![Successful Connection](./Milestone%201&2/successful_connection.png)
+
 _A Python script (run_infinite_post_data_loop) was implemented to simulate continuous data ingestion from Pinterest, emulating user interactions with the Pinterest API. The script fetched random rows from tables (pinterest_data, geolocation_data, user_data) and outputted them as key-value pairs._
+
+![Infinite Data Loop](./Milestone%201&2/infinite_data_loop.png)
 
 ## Milestone 3: EC2 Kafka Client Configuration
 
