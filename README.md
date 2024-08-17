@@ -30,7 +30,7 @@ The architecture of this project is designed to simulate a real-time data pipeli
 - **AWS Kinesis:** Manages streaming data.
 - **Databricks:** Used for processing and analyzing the data.
 
-## Milestone 1: Environment Setup
+## Milestone 1&2: Environment Setup
 
 The initial phase involved setting up the development environment. This included:
 
@@ -44,16 +44,9 @@ _To begin, infrastructure was established to simulate a typical Pinterest data e
 - _**geolocation_data**: Stores geolocation data linked to each Pinterest post._
 - _**user_data**: Includes details about the users who uploaded the posts._
 
-_A db_creds.yaml file was then created to securely store the database credentials (HOST, USER, PASSWORD), ensuring these details were not uploaded to GitHub by adding the file to the .gitignore list._
+_A db_creds.yaml file was then created to securely store the database credentials (HOST, USER, PASSWORD), ensuring these details were not uploaded to GitHub by adding the file to the .gitignore list. A class was created to connect to the RDS database using parameters like HOST, USER, PASSWORD, etc._
 
-_The script was executed to print and examine pin_result, geo_result, and user_result, each representing a single entry from the corresponding tables. This provided familiarity with the data structure that would be used throughout the project._
-
-## Milestone 2: Building the Pipeline Foundation
-
-This milestone introduced the core functionality of the pipeline:
-
-- **Database Connection:** A class was created to connect to the RDS database using parameters like HOST, USER, PASSWORD, etc.
-- **Data Ingestion Script:** A Python script (run_infinite_post_data_loop) was implemented to simulate continuous data ingestion from Pinterest, emulating user interactions with the Pinterest API. The script fetched random rows from tables (pinterest_data, geolocation_data, user_data) and outputted them as key-value pairs.
+_A Python script (run_infinite_post_data_loop) was implemented to simulate continuous data ingestion from Pinterest, emulating user interactions with the Pinterest API. The script fetched random rows from tables (pinterest_data, geolocation_data, user_data) and outputted them as key-value pairs._
 
 ## Milestone 3: EC2 Kafka Client Configuration
 
