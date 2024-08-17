@@ -87,6 +87,12 @@ The goal was to build an API that sends data to the MSK cluster:
 - **REST Proxy Configuration:** A REST proxy was installed on the EC2 instance, enabling the API to communicate with the Kafka cluster.
 - **Data Emulation:** The user_posting_emulation.py script was modified to send data through the API to the Kafka topics, which was then stored in the S3 bucket.
 
+_The API Gateway was configured with a proxy+ resource. This setup allows the API to handle various paths and methods dynamically. An HTTP ANY method was created for this resource. This method allows the API to accept any type of HTTP request (GET, POST, PUT, DELETE, etc.). The Endpoint URL was set to the public DNS of the EC2 instance, which was configured to run the Kafka REST Proxy. After the resource and method were configured, the API was deployed. The deployment stage was named test, and an Invoke URL was generated. This URL is crucial as it serves as the entry point for any API requests that interact with the MSK cluster._
+
+_The Confluent Kafka REST Proxy was installed on the EC2 instance. This proxy acts as a bridge, allowing HTTP requests to interact with Kafka. The installation was performed using a downloaded package that was extracted and configured within the EC2 environment. The kafka-rest.properties file was modified to enable IAM authentication. This configuration is essential for secure communication with the MSK cluster. The bootstrap servers and the IAM role ARN were specified in the properties file to ensure proper authentication and connection to the Kafka cluster. Once configured, the Kafka REST Proxy was started on the EC2 instance. This proxy must run continuously to accept and forward API requests to the Kafka topics._
+
+_The user_posting_emulation.py script was updated to send data to the Kafka topics via the newly created API. The script was modified to use the Invoke URL from the API Gateway as the destination for the POST requests. The script was structured to send data from three tables (pinterest_data, geolocation_data, user_data) to their respective Kafka topics. After running the script, the data flow was verified by checking the Kafka consumers on the EC2 instance to ensure that messages were being successfully consumed. Additionally, the S3 bucket was checked to confirm that the data was being stored correctly in the expected folder structure._
+
 ## Milestone 6: Databricks Setup and S3 Integration
 
 This milestone transitioned the focus to Databricks, where data processing would occur:
