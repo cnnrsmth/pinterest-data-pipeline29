@@ -101,6 +101,12 @@ This milestone transitioned the focus to Databricks, where data processing would
 - **S3 Bucket Mounting:** The S3 bucket was mounted to Databricks, allowing easy access to the data stored by the Kafka Connectors.
 - **DataFrame Creation:** Data from the S3 bucket was read into Spark DataFrames, ready for transformation and analysis.
 
+_A Databricks account was configured to serve as the primary environment for processing the Pinterest data. After setting up the account, essential libraries for interacting with AWS services and processing data in Spark were imported._
+
+_The S3 bucket, which was previously used to store Kafka stream data, was mounted to the Databricks environment. This step ensured seamless access to the data stored in the bucket, allowing it to be read directly into Spark DataFrames for further processing. The credentials for accessing the S3 bucket were securely handled, ensuring that the connection was both secure and efficient._
+
+_With the S3 bucket mounted, the JSON data stored in the bucket was read into Spark DataFrames. Separate DataFrames were created for each type of data—Pinterest post data (df_pin), geolocation data (df_geo), and user data (df_user). These DataFrames served as the foundation for subsequent data cleaning, transformation, and analysis tasks within Databricks._
+
 ## Milestone 7: Data Cleaning and Transformation with Spark
 
 This milestone involved cleaning and transforming the data using Spark:
@@ -108,6 +114,25 @@ This milestone involved cleaning and transforming the data using Spark:
 - **Data Cleaning:** Each DataFrame (pin, geo, user) was cleaned by replacing null values, converting data types, and restructuring columns.
 - **Complex Transformations:** The data was further transformed to enable analysis, such as finding the most popular categories and users by various metrics (e.g., by country, by year).
 - **Joins and Aggregations:** The DataFrames were joined and aggregated to answer specific queries, such as identifying popular categories across different demographics.
+
+_Cleaning operations included:_
+
+- _**Replacing Null Values**: Replaced irrelevant or empty entries with None._
+- _**Data Type Conversion**: The follower_count column in df_pin was converted from a string to an integer by removing non-numeric characters and standardizing the format (e.g., converting "k" and "M" to their numerical equivalents)._
+- _**Column Reordering and Renaming**: Renamed columns for clarity and reordered them to match our analysis requirements. For instance, index was renamed to ind and positioned at the start of each DataFrame for consistency._
+
+_Transformation operations included:_
+
+- _**Creating Derived Columns**: Created new columns such as coordinates in df_geo by combining latitude and longitude values, and user_name in df_user by concatenating first_name and last_name._
+- _**Time-based Transformations**: Converted timestamp strings into datetime objects to facilitate time-based analyses._
+
+_Joins and Aggregations included:_
+
+- _**Most Popular Category by Country**: We joined df_pin and df_geo using the ind column and used groupBy and agg to count the occurrences of each category within each country. We employed a window function to partition the data by country and order by the category count to determine the most popular categories._
+- _**Most Popular Category by Year**: A similar approach was used to find the most popular categories each year, focusing on the timestamp column to extract and analyze year-wise trends._
+- _**Most Popular User by Country**: By joining df_pin and df_user, we grouped the data by country and identified users with the highest follower counts in each region._
+- _**Age-based Analysis**: We created an age_group column in df_user and performed age-wise analysis to determine the most popular categories and median follower counts for different age groups._
+- _**Time-based User Analysis**: We analyzed user activity over time, focusing on the number of users joining each year and their median follower counts. We employed Window functions and percentile_approx for calculating the median, ensuring robust statistical insights._
 
 ## Milestone 8: Automating with AWS MWAA
 
