@@ -71,6 +71,14 @@ The objective here was to ensure that data flowing through Kafka topics was auto
 - **Plugin Creation:** A custom MSK Connect plugin was created using the Confluent S3 connector, which was uploaded to an S3 bucket.
 - **Connector Configuration:** A connector was configured within MSK Connect to route data from the Kafka topics to corresponding S3 buckets, ensuring persistent storage of streamed data.
 
+_A custom plugin was created using the Confluent.io Amazon S3 Connector. This plugin was designed to manage the transfer of data from the Kafka topics to the designated S3 bucket. The plugin was downloaded to the EC2 client and then uploaded to an S3 bucket._
+
+_The S3 bucket was already configured with the necessary VPC endpoint and IAM roles, eliminating the need for additional setup_
+
+_A connector was then created in the MSK Connect console, using the custom plugin to route data from the Kafka topics to the S3 bucket. This involved setting the topics.regex field in the connector configuration to user-<your_UserId>.\* to ensure that all three Kafka topics were stored in the S3 bucket. Additionally, the IAM role used for authentication to the MSK cluster was specified in the Access permissions tab_
+
+_Once the plugin and connector were set up, data passing through the IAM-authenticated Kafka cluster was automatically stored in the designated S3 bucket. This configuration ensured persistent storage of streamed data, providing a reliable backup and retrieval mechanism._
+
 ## Milestone 5: API Gateway and REST Proxy Configuration
 
 The goal was to build an API that sends data to the MSK cluster:
