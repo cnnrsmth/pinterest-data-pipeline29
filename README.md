@@ -128,11 +128,11 @@ _Transformation operations included:_
 
 _Joins and Aggregations included:_
 
-- _**Most Popular Category by Country**: We joined df_pin and df_geo using the ind column and used groupBy and agg to count the occurrences of each category within each country. We employed a window function to partition the data by country and order by the category count to determine the most popular categories._
+- _**Most Popular Category by Country**: Joined df_pin and df_geo using the ind column and used groupBy and agg to count the occurrences of each category within each country. Employed a window function to partition the data by country and order by the category count to determine the most popular categories._
 - _**Most Popular Category by Year**: A similar approach was used to find the most popular categories each year, focusing on the timestamp column to extract and analyze year-wise trends._
-- _**Most Popular User by Country**: By joining df_pin and df_user, we grouped the data by country and identified users with the highest follower counts in each region._
-- _**Age-based Analysis**: We created an age_group column in df_user and performed age-wise analysis to determine the most popular categories and median follower counts for different age groups._
-- _**Time-based User Analysis**: We analyzed user activity over time, focusing on the number of users joining each year and their median follower counts. We employed Window functions and percentile_approx for calculating the median, ensuring robust statistical insights._
+- _**Most Popular User by Country**: By joining df_pin and df_user, was able to group the data by country and identified users with the highest follower counts in each region._
+- _**Age-based Analysis**: Created an age_group column in df_user and performed age-wise analysis to determine the most popular categories and median follower counts for different age groups._
+- _**Time-based User Analysis**: Analyzed user activity over time, focusing on the number of users joining each year and their median follower counts. We employed Window functions and percentile_approx for calculating the median, ensuring robust statistical insights._
 
 ## Milestone 8: Automating with AWS MWAA
 
@@ -141,13 +141,37 @@ The objective was to automate the entire data processing workflow using Airflow:
 - **DAG Creation:** An Airflow DAG was created in VSCode and uploaded to an S3 bucket. This DAG orchestrated the execution of the Databricks notebook.
 - **MWAA Integration:** The DAG was triggered in the Airflow UI, confirming successful execution and automation of the pipeline.
 
+_A Directed Acyclic Graph (DAG) was constructed in VSCode to define the sequence of tasks that needed to be executed within Databricks. The DAG was designed to trigger the execution of a Databricks notebook, handling the complete ETL process. The DAG was scripted to be reusable and was uploaded to an S3 bucket dedicated to MWAA (mwaa-dags-bucket), ensuring it could be scheduled and managed through the Airflow UI._
+
+_The process included:_
+
+- _**Environment Configuration**: The MWAA environment, pre-configured with access to necessary AWS resources, was leveraged for the DAG deployment. The environment also had access to Databricks through an API, allowing seamless integration._
+- _**DAG Scheduling**: The DAG was configured with a daily schedule, ensuring the ETL processes were executed at regular intervals without manual intervention. Error handling and retry mechanisms were incorporated into the DAG to account for any potential failures during execution._
+- _**Task Orchestration**: Each task within the DAG represented a step in the data pipeline, from reading data from S3 to processing it in Databricks. The DAG was designed to handle dependencies between tasks, ensuring they executed in the correct sequence._
+
+_The DAG was uploaded to the MWAA environment and manually triggered through the Airflow UI to verify the correctness of the setup. The successful execution of the DAG confirmed that the automation pipeline was functioning as expected, with the Databricks notebook running end-to-end, processing data as per the defined tasks. The entire workflow was now automated, eliminating the need for manual triggers and enabling consistent and repeatable data processing operations._
+
 ## Milestone 9: Real-Time Data Processing with AWS Kinesis
 
 This milestone replaced Kafka with Kinesis to handle real-time data streaming:
 
+_While batch processing (previous milestones) involves handling data in large blocks at scheduled intervals, stream processing deals with continuous data flow, allowing for real-time insights._
+
 - **Kinesis Stream Setup:** Three Kinesis data streams were created to replace the Kafka topics.
 - **API Gateway Configuration:** The API was updated to send data to Kinesis instead of Kafka.
 - **Real-Time Data Ingestion:** The Python script was modified to send data to the Kinesis streams. Data was then read into Databricks in real-time, transformed, and written to Delta tables.
+
+_Kinesis Setup steps:_
+
+- _**Kinesis Streams**: Three Kinesis streams were created to handle data that was previously processed using Kafka. These streams are specifically named for Pinterest's pin, geo, and user data tables._
+- _**API Gateway Configuration**: The existing API was modified to route data to these Kinesis streams instead of Kafka. This ensured that data generated by the user_posting_emulation.py script would now be sent to Kinesis._
+- _**Data Ingestion**: A new Python script, user_posting_emulation_streaming.py, was implemented. This script sends data in real-time to the Kinesis streams, emulating continuous user interaction with the Pinterest platform._
+
+_Kinesis and Databricks Integration steps:_
+
+- _**Real-Time Data Reading**: Databricks was set up to read the data directly from Kinesis streams in real-time. This involved configuring a new Databricks notebook to connect with the Kinesis streams using appropriate credentials and ingesting the streaming data._
+- _**Data Transformation**: Once ingested, the streaming data underwent similar cleaning and transformation processes as the batch data. This included handling missing values, converting data types, and reordering columns._
+- _**Writing to Delta Tables**: The transformed streaming data was written to Delta tables within Databricks. These tables, named after the user ID, ensured that the real-time data was stored efficiently and was readily accessible for further analysis or queries._
 
 ## Conclusion
 
