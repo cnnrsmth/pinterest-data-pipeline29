@@ -64,11 +64,21 @@ This milestone focused on setting up an EC2 instance to act as a Kafka client:
 
 _A key pair file was generated locally with a .pem extension, allowing secure SSH access to the EC2 instance. This key pair was retrieved from the AWS Parameter Store and saved locally. The key was used to establish an SSH connection to the EC2 instance, ensuring secure communication._
 
+![SSH Connection](./Images/Milestone%203/ssh.png)
+
 _Apache Kafka was installed on the EC2 instance. Alongside this, the IAM MSK authentication package was configured to enable secure communication between the EC2 client and the MSK cluster. The necessary environment variables were set to ensure proper path configurations and to establish the EC2 instance’s ability to use AWS IAM for MSK cluster authentication._
+
+![EC2 IAM](./Images/Milestone%203/ec2-iam.png)
 
 _The EC2 instance was configured to authenticate with the MSK cluster using IAM roles. This involved setting up trust relationships and modifying client properties to include the IAM role ARN, which grants the necessary permissions for cluster access._
 
+![Client Properties](./Images/Milestone%203/client-properties.png)
+
 _Three Kafka topics were created within the MSK cluster—pin, geo, and user. These topics were configured using the Kafka command-line tools, with bootstrap servers and Zookeeper connection strings retrieved from the MSK management console. The CLASSPATH environment variable was set appropriately to ensure seamless operation of the Kafka commands._
+
+![MSK Cluster Information](./Images/Milestone%203/MSK-cluster-info.png)
+
+![Create Topics](./Images/Milestone%203/create-topics.png)
 
 ## Milestone 4: Connecting MSK Cluster to S3 Bucket
 
