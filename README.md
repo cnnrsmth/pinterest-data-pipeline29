@@ -95,6 +95,12 @@ _A connector was then created in the MSK Connect console, using the custom plugi
 
 _Once the plugin and connector were set up, data passing through the IAM-authenticated Kafka cluster was automatically stored in the designated S3 bucket. This configuration ensured persistent storage of streamed data, providing a reliable backup and retrieval mechanism._
 
+![kafka-connect-zip](./Images/Milestone%204/kafka-connect-zip.png)
+
+![customised-plugin](./Images/Milestone%204/customised-plugin.png)
+
+![connector](./Images/Milestone%204/connector.png)
+
 ## Milestone 5: API Gateway and REST Proxy Configuration
 
 The goal was to build an API that sends data to the MSK cluster:
