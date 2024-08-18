@@ -145,7 +145,15 @@ _A Databricks account was configured to serve as the primary environment for pro
 
 _The S3 bucket, which was previously used to store Kafka stream data, was mounted to the Databricks environment. This step ensured seamless access to the data stored in the bucket, allowing it to be read directly into Spark DataFrames for further processing. The credentials for accessing the S3 bucket were securely handled, ensuring that the connection was both secure and efficient._
 
+![mount](./Images/Milestone%206/mount.png)
+
 _With the S3 bucket mounted, the JSON data stored in the bucket was read into Spark DataFrames. Separate DataFrames were created for each type of data—Pinterest post data (df_pin), geolocation data (df_geo), and user data (df_user). These DataFrames served as the foundation for subsequent data cleaning, transformation, and analysis tasks within Databricks._
+
+![pin-df](./Images/Milestone%206/pin-df.png)
+
+![geo-df](./Images/Milestone%206/geo-df.png)
+
+![user-df](./Images/Milestone%206/user-df.png)
 
 ## Milestone 7: Data Cleaning and Transformation with Spark
 
@@ -166,6 +174,12 @@ _Transformation operations included:_
 - _**Creating Derived Columns**: Created new columns such as coordinates in df_geo by combining latitude and longitude values, and user_name in df_user by concatenating first_name and last_name._
 - _**Time-based Transformations**: Converted timestamp strings into datetime objects to facilitate time-based analyses._
 
+![cleaned-transformed-pin](./Images/Milestone%206/cleaned-pin.png)
+
+![cleaned-transformed-geo](./Images/Milestone%206/cleaned-geo.png)
+
+![cleaned-transformed-user](./Images/Milestone%206/cleaned-user.png)
+
 _Joins and Aggregations included:_
 
 - _**Most Popular Category by Country**: Joined df_pin and df_geo using the ind column and used groupBy and agg to count the occurrences of each category within each country. Employed a window function to partition the data by country and order by the category count to determine the most popular categories._
@@ -173,6 +187,22 @@ _Joins and Aggregations included:_
 - _**Most Popular User by Country**: By joining df_pin and df_user, was able to group the data by country and identified users with the highest follower counts in each region._
 - _**Age-based Analysis**: Created an age_group column in df_user and performed age-wise analysis to determine the most popular categories and median follower counts for different age groups._
 - _**Time-based User Analysis**: Analyzed user activity over time, focusing on the number of users joining each year and their median follower counts. We employed Window functions and percentile_approx for calculating the median, ensuring robust statistical insights._
+
+![question-1](./Images/Milestone%206/1-popular-post-categories.png)
+
+![question-2](./Images/Milestone%206/2-timebound-posts.png)
+
+![question-3](./Images/Milestone%206/3-most-followers.png)
+
+![question-4](./Images/Milestone%206/4-popular-categories.png)
+
+![question-5](./Images/Milestone%206/5-median-follower-count.png)
+
+![question-6](./Images/Milestone%206/6-timebound-join.png)
+
+![question-7](./Images/Milestone%206/7-timebound-median-follower.png)
+
+![question-8](./Images/Milestone%206/8-timebound-median-follower-age.png)
 
 ## Milestone 8: Automating with AWS MWAA
 
