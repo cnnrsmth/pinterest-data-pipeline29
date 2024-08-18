@@ -174,11 +174,11 @@ _Transformation operations included:_
 - _**Creating Derived Columns**: Created new columns such as coordinates in df_geo by combining latitude and longitude values, and user_name in df_user by concatenating first_name and last_name._
 - _**Time-based Transformations**: Converted timestamp strings into datetime objects to facilitate time-based analyses._
 
-![cleaned-transformed-pin](./Images/Milestone%206/cleaned-pin.png)
+![cleaned-transformed-pin](./Images/Milestone%207/cleaned-pin.png)
 
-![cleaned-transformed-geo](./Images/Milestone%206/cleaned-geo.png)
+![cleaned-transformed-geo](./Images/Milestone%2067cleaned-geo.png)
 
-![cleaned-transformed-user](./Images/Milestone%206/cleaned-user.png)
+![cleaned-transformed-user](./Images/Milestone%207/cleaned-user.png)
 
 _Joins and Aggregations included:_
 
@@ -188,21 +188,21 @@ _Joins and Aggregations included:_
 - _**Age-based Analysis**: Created an age_group column in df_user and performed age-wise analysis to determine the most popular categories and median follower counts for different age groups._
 - _**Time-based User Analysis**: Analyzed user activity over time, focusing on the number of users joining each year and their median follower counts. We employed Window functions and percentile_approx for calculating the median, ensuring robust statistical insights._
 
-![question-1](./Images/Milestone%206/1-popular-post-categories.png)
+![question-1](./Images/Milestone%207/1-popular-post-categories.png)
 
-![question-2](./Images/Milestone%206/2-timebound-posts.png)
+![question-2](./Images/Milestone%207/2-timebound-posts.png)
 
-![question-3](./Images/Milestone%206/3-most-followers.png)
+![question-3](./Images/Milestone%207/3-most-followers.png)
 
-![question-4](./Images/Milestone%206/4-popular-categories.png)
+![question-4](./Images/Milestone%207/4-popular-categories.png)
 
-![question-5](./Images/Milestone%206/5-median-follower-count.png)
+![question-5](./Images/Milestone%207/5-median-follower-count.png)
 
-![question-6](./Images/Milestone%206/6-timebound-join.png)
+![question-6](./Images/Milestone%207/6-timebound-join.png)
 
-![question-7](./Images/Milestone%206/7-timebound-median-follower.png)
+![question-7](./Images/Milestone%207/7-timebound-median-follower.png)
 
-![question-8](./Images/Milestone%206/8-timebound-median-follower-age.png)
+![question-8](./Images/Milestone%207/8-timebound-median-follower-age.png)
 
 ## Milestone 8: Automating with AWS MWAA
 
@@ -219,7 +219,15 @@ _The process included:_
 - _**DAG Scheduling**: The DAG was configured with a daily schedule, ensuring the ETL processes were executed at regular intervals without manual intervention. Error handling and retry mechanisms were incorporated into the DAG to account for any potential failures during execution._
 - _**Task Orchestration**: Each task within the DAG represented a step in the data pipeline, from reading data from S3 to processing it in Databricks. The DAG was designed to handle dependencies between tasks, ensuring they executed in the correct sequence._
 
+![DAG-script](./Images/Milestone%208/dag-script.png)
+
 _The DAG was uploaded to the MWAA environment and manually triggered through the Airflow UI to verify the correctness of the setup. The successful execution of the DAG confirmed that the automation pipeline was functioning as expected, with the Databricks notebook running end-to-end, processing data as per the defined tasks. The entire workflow was now automated, eliminating the need for manual triggers and enabling consistent and repeatable data processing operations._
+
+![S3-DAG-Upload](./Images/Milestone%208/S3-dag.png)
+
+![Airflow-DAG](./Images/Milestone%208/Airflow-DAG-UI.png)
+
+![Databricks-DAG-Triggered-Job](./Images/Milestone%208/Databricks-DAG-Triggered-Job.png)
 
 ## Milestone 9: Real-Time Data Processing with AWS Kinesis
 
